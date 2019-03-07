@@ -1,0 +1,303 @@
+/* custom styles */
+
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+body, html { overflow-x: hidden; font-family: 'Open Sans', sans-serif; }
+.page-bar .page-breadcrumb>li>a, .page-bar .page-breadcrumb>li>span { line-height: 38px; }
+.coachSpecialitiesCls .bootstrap-tagsinput { width: 100%; display: block; }
+.date-set { background: none; outline: none; border: none; }
+.page-md .page-bar .page-toolbar .btn-fit-height { padding-top: 15px; padding-bottom: 15px; }
+.easy-autocomplete { width: 100% !important; }
+.slimScrollCustom::-webkit-scrollbar-track {
+-webkit-box-shadow: inset 0 0 6px #d3d3d3;
+background-color: #F5F5F5;
+}
+.slimScrollCustom::-webkit-scrollbar {
+width: 6px;
+background-color: #F5F5F5;
+}
+.slimScrollCustom::-webkit-scrollbar-thumb {
+background-color: #9e9e9e;
+}
+.reservationsTabelVue.table>tbody>tr>td, .reservationsTabelVue.table>tbody>tr>th { padding: 12px !important; }
+.reservationsTabelVue.table .btn { margin-right: 0; }
+.has-error.facebookChk .md-checkbox label, .has-error.facebookChk.md-checkbox label { color: #3B5998 !important; }
+.has-error.facebookChk .md-checkbox label>.box, .has-error.facebookChk .md-checkbox label>.check, .has-error.facebookChk.md-checkbox label>.box, .has-error.facebookChk.md-checkbox label>.check { border-color: #3B5998 !important; }
+.has-error.twitterChk .md-checkbox label, .has-error.twitterChk.md-checkbox label { color: #0084b4 !important; }
+.has-error.twitterChk .md-checkbox label>.box, .has-error.twitterChk .md-checkbox label>.check, .has-error.twitterChk.md-checkbox label>.box, .has-error.twitterChk.md-checkbox label>.check { border-color: #0084b4 !important; }
+.has-error.instagramChk .md-checkbox label, .has-error.instagramChk.md-checkbox label { color: #e44458 !important; }
+.has-error.instagramChk .md-checkbox label>.box, .has-error.instagramChk .md-checkbox label>.check, .has-error.instagramChk.md-checkbox label>.box, .has-error.instagramChk.md-checkbox label>.check { border-color: #e44458 !important; }
+.reservationsTabelVue.table>tbody+tbody { border-width: 1px; }
+.social-media-form textarea.form-control { border: 1px solid #e7ecf1 !important; height: 195px; }
+/*.custom-file-upload-hidden { display: none; visibility: hidden; position: absolute; left: -9999px; }*/
+/*.custom-file-upload { display: block; width: auto; font-size: 16px; margin-top: -10px; }*/
+/*.custom-file-upload label { display: block; margin-bottom: 5px; }*/
+/*.file-upload-wrapper { position: relative; margin-bottom: 5px; }*/
+/*.file-upload-input { width: 76%; color: #fff; font-size: 16px; padding: 11px 17px; border: none; background-color: #e7505a; -moz-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in; float: left; }*/
+/*.file-upload-input:hover, .file-upload-input:focus { background-color: #e7505a; outline: none; }*/
+/*.file-upload-button { cursor: pointer; display: inline-block; color: #fff; font-size: 16px; text-transform: uppercase; padding: 11px 20px; border: none; margin-left: -1px; background-color: #E43A45; float: left;!* IE 9 Fix *! -moz-transition: all 0.2s ease-in; -o-transition: all 0.2s ease-in; -webkit-transition: all 0.2s ease-in; transition: all 0.2s ease-in; }*/
+/*.file-upload-button:hover { background-color: #E43A45; }*/
+.social-media-form .md-checkbox-inline .md-checkbox { margin-right: 0; }
+.csEditBtn { padding: 5px 20px !important; }
+.fileinput.fileinput-new { width: 100% !important; }
+.fileinput.fileinput-exists { width: 100% !important; }
+.fileinput.fileinput-new .input-large { width: 100% !important; }
+.fileinput.fileinput-exists .input-large { width: 100% !important; position: relative; }
+.fileinput.fileinput-new .input-medium { width: 100% !important; }
+.fileinput.fileinput-exists .input-medium { width: 74.5% !important; position: absolute; z-index: 0; }
+.customPaddingTable.table>tbody>tr>td, .customPaddingTable.table>tbody>tr>th, .customPaddingTable.table>tfoot>tr>td, .customPaddingTable.table>tfoot>tr>th, .customPaddingTable.table>thead>tr>td, .customPaddingTable.table>thead>tr>th { padding: 16px 12px 12px 12px; }
+.customPaddingTable.newsFeed.table>tbody>tr>td, .customPaddingTable.newsFeed.table>tbody>tr>th, .customPaddingTable.newsFeed.table>tfoot>tr>td, .customPaddingTable.newsFeed.table>tfoot>tr>th, .customPaddingTable.newsFeed.table>thead>tr>td, .customPaddingTable.newsFeed.table>thead>tr>th { padding: 30px 12px 30px 0; }
+.newsFeed.table tr:first-child td { border-top: 0; }
+.customLoginFormAction button i { color: #e7505a !important; }
+.customLoginFormAction button:hover i { color: #fff !important; }
+.login .content .forget-password { float: none !important; }
+.tennis-courts { position: relative }
+.preLoader { position: absolute; width: 100%; height: 100%; text-align: center; background: rgba(255, 255, 255, 0.83); z-index: 1; display: flex; justify-content: center; align-items: center; }
+[v-cloak] { display: none; }
+/* loader */
+
+.sk-cube-grid { width: 40px; height: 40px; margin: 100px auto; }
+.sk-cube-grid .sk-cube { width: 33%; height: 33%; background-color: #e7505a; float: left; -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out; }
+.sk-cube-grid .sk-cube1 { -webkit-animation-delay: 0.2s; animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube2 { -webkit-animation-delay: 0.3s; animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube3 { -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
+.sk-cube-grid .sk-cube4 { -webkit-animation-delay: 0.1s; animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube5 { -webkit-animation-delay: 0.2s; animation-delay: 0.2s; }
+.sk-cube-grid .sk-cube6 { -webkit-animation-delay: 0.3s; animation-delay: 0.3s; }
+.sk-cube-grid .sk-cube7 { -webkit-animation-delay: 0s; animation-delay: 0s; }
+.sk-cube-grid .sk-cube8 { -webkit-animation-delay: 0.1s; animation-delay: 0.1s; }
+.sk-cube-grid .sk-cube9 { -webkit-animation-delay: 0.2s; animation-delay: 0.2s; }
+ @-webkit-keyframes sk-cubeGridScaleDelay {
+ 0%, 70%, 100% {
+ -webkit-transform: scale3D(1, 1, 1);
+ transform: scale3D(1, 1, 1);
+}
+35% {
+ -webkit-transform: scale3D(0, 0, 1);
+ transform: scale3D(0, 0, 1);
+}
+}
+ @keyframes sk-cubeGridScaleDelay {
+ 0%, 70%, 100% {
+ -webkit-transform: scale3D(1, 1, 1);
+ transform: scale3D(1, 1, 1);
+}
+35% {
+ -webkit-transform: scale3D(0, 0, 1);
+ transform: scale3D(0, 0, 1);
+}
+}
+/* loader */
+
+/* league view page */
+
+.leagueView .row { margin-top: 10px; }
+.leagueView .media { height: 150px; width: 100%; object-fit: cover; object-position: center; margin-bottom: 25px; }
+.leagueView label { color: #a9a9a9; }
+.leagueView .description { font-weight: bold; font-size: 14px; color: #333; }
+.mt-action-datetime strong { color: #333; }
+.page-title-btn { margin-top: 20px; }
+/* league view page */
+
+/* trainings fixes - arslan */
+
+.action-btns { width: 300px; }
+.memberReservationSearchBar { max-width: 200px; width: 100%; display: inline-block; margin-right: 10px; }
+.memberReservationSearchBar div input { border-radius: 50px !important; }
+.league-match { padding: 10px 0 10px 0; border-bottom: 1px solid #f5f5f5; }
+.league-match .match-date { font-size: 18px; color: #333; font-weight: bold; text-transform: uppercase; }
+.league-match .match-court { font-size: 14px; color: #acacac; text-transform: uppercase; margin-left: 5px; }
+.league-match .match-user { display: inline-block; }
+.league-match .match-user:nth-child(2):before { content: 'VS'; font-size: 28px; font-weight: bold; text-transform: uppercase; margin: 0 15px 0 15px; display: inline-block; float: left; color: #e7505a; }
+.league-match .match-user .user-img { display: inline-block; float: left; margin-right: 10px; }
+.league-match .match-user .user-img img { width: 45px; height: 45px; border: 1px transparent; border-radius: 50% !important; object-fit: cover; object-position: center; }
+.league-match .match-user .user-name { display: inline-block; text-transform: capitalize; font-weight: bold; }
+.league-match .match-user .exp-level { color: #acacac; }
+.league-match .match-user .exp-level strong { color: #333; }
+.rankCreator { list-style: none; padding-left: 0; margin-left: 0; }
+.rankCreator li { list-style: none; padding: 5px; margin: 10px; font-size: 16px; font-weight: 700; text-transform: uppercase; background: #f5f1f15c; }
+.rankCreator li span.image img { width: 50px; height: 50px; border: 1px transparent; border-radius: 50% !important; display: inline-block; margin-right: 10px; }
+.dragging { opacity: .5; }
+.over { border-color: #e6e6e6; border-style: dashed; }
+/* trainings fixes - arslan */
+.mr20 { margin-right: 20px; }
+.mb20 { margin-bottom: 20px !important; }
+.mb30 { margin-bottom: 30px !important; }
+.mt20 { margin-top: 20px !important; }
+.mt30 { margin-top: 30px !important; }
+.rankedUser { position: relative; display: inline-block; max-width: 60px; background: #f5f5f5; padding: 0px 4px; cursor: pointer; margin: 0px 15px; }
+.leagueName { height: 35px; overflow: hidden; margin-top: 5px; font-size: 12px; line-height: 16px; }
+.pyramidRow .rankedUser img { width: 40px; height: 40px; margin-top: 5px; }
+.userNameImage { background-size: 40px; width: 40px; height: 40px; display: inline-block; border-radius: 50% !important; background-repeat: no-repeat; background-color: #fff; background-position: center center; margin-top: 5px; }
+#league-vue-container .portlet.light.bordered.equalHeight { min-height: 702px; }
+.searchWithForm { }
+.searchWithForm .input-icon.right>.form-control { position: relative; }
+.searchWithForm button { position: absolute; right: 0; top: 0px; background: transparent; border: 0; padding-right: 10px; padding-left: 10px; height: 34px; color: #333; outline: none; }
+.searchWithForm button:focus { outline: none; }
+.searchWithForm button i { color: #ccc; }
+.w-100 { width: 100% !important }
+.m-t-0 { margin-top: 0px !important; }
+.m-t-10 { margin-top: 10px; }
+.m-t-15 { margin-top: 15px; }
+.m-t-20 { margin-top: 20px; }
+.m-t-25 { margin-top: 25px; }
+.m-t-30 { margin-top: 30px; }
+.m-t-40 { margin-top: 40px; }
+.m-t-50 { margin-top: 50px; }
+.m-t-60 { margin-top: 60px; }
+.f-600 { font-weight:600; }
+.resultBox { margin: 0px 15px 30px !important; text-align: center; }
+.resultBox .rankedUser { margin: 2.5px !important; }
+.m-widget2 .m-widget2__item { disply: table; margin-bottom: 1.4rem; position: relative; }
+.m-widget2 .m-widget2__item:before { position: absolute; display: block; border-radius: 0; width: 4px; height: 100%; left: 72px; content: ""; min-height: 60px; }
+.m-widget2 .m-widget2__item .m-widget2__checkbox { display: table-cell; vertical-align: middle; padding-left: 2.2rem; padding-top: 1rem; }
+.m-widget2 .m-widget2__item .m-widget2__desc { display: table-cell; width: 100%; vertical-align: top; padding-left: 0.3rem; padding-top: 0.23rem; font-size: 1rem; }
+.m-widget2 .m-widget2__item .m-widget2__desc .m-widget2__text { font-size: 1rem; font-weight: 400; }
+.m-widget2 .m-widget2__item .m-widget2__desc .m-widget2__user-name .m-widget2__link { font-size: 0.85rem; }
+.m-widget2 .m-widget2__item .m-widget2__desc .m-widget2__user-name .m-widget2__link:hover { text-decoration: none; }
+.m-widget2 .m-widget2__item:hover .m-widget2__actions .m-widget2__actions-nav { visibility: visible; }
+.m-widget2 .m-widget2__item:hover { cursor: pointer; }
+.m-widget2 .m-widget2__item:hover .m-widget2__actions-nav { visibility: hidden; }
+.m-widget2 .m-widget2__item:hover .m-widget2__actions .m-widget2__actions-nav { visibility: visible; }
+.m-widget2__item.m-widget2__item--primary:before { background: #5867dd; }
+.m-widget2__item.m-widget2__item1.m-widget2__item--primary:before { background: #36c6d3 !important; }
+.m-widget2__item.m-widget2__item2.m-widget2__item--primary:before { background: #ffb822 !important; }
+.m-widget2__item.m-widget2__item3.m-widget2__item--primary:before { background: #36a3f7 !important; }
+.m-widget2__item.m-widget2__item4.m-widget2__item--primary:before { background: #f4516c !important; }
+.trainerWidget { }
+.trainerWidget.m-widget2 .m-widget2__item { padding-left: 90px; }
+.trainerWidget .md-checkbox { margin-top: 1rem; display: inline-block; }
+.trainerWidget .trainerName { line-height: 18px; color: #575962; font-weight: 600; padding-right: 60px; display: inline-block; margin-top: -7px; }
+.trainerWidget .md-checkbox label { padding-left: 35px; }
+.trainerWidget .trainerName small { display: inline-block; font-size: 12px; color: #575962; font-weight: 300; width: 100%; }
+.trainerWidget .m-dropdown__toggle { font-size: 22px; float: right; color: #5867dd; margin-right: 30px; position: absolute; right: 0px; top: 0px; }
+.trainerWidget .m-widget2__actions { position: absolute; background: #fff; top: 40px; z-index: 1; right: -22px; padding: 20px; box-shadow: 0px 0px 20px #00000045; border-radius: 4px !important; width: 200px; display: none; }
+.trainerWidget .m-dropdown__content ul { padding: 0px; }
+.trainerWidget .m-dropdown__content ul li { list-style: none; padding: 10px 0px; line-height: 0px; }
+.trainerWidget .m-dropdown__content ul li a { font-size: 14px; color: #6f727d; line-height: 14px; width: 100%; }
+.trainerWidget .m-dropdown__content ul li a:hover { text-decoration: none; color: #5867dd; }
+.trainerWidget .m-dropdown__content ul li { }
+.trainerWidget .m-widget2__actions:before { width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-bottom: 15px solid #e3e3e3; position: absolute; top: -15px; content: ""; right: 15px; }
+.trainerWidget.m-widget2.trainerWidget .m-dropdown__toggle { visibility: hidden; }
+.trainerWidget.m-widget2.trainerWidget:hover .m-dropdown__toggle { visibility: visible; }
+.trainerWidget.m-widget2.trainerWidget .m-dropdown__toggle:hover > .m-widget2__actions { display: block !important; }
+.trainerWidget .trainerImg { width: 60px; float: left; height: 60px; position: absolute; text-align: center; }
+.trainerWidget .trainerImg img { width: auto; height: 60px; }
+.trainerWidget { position: relative; margin-bottom: 15px; height: 100%; }
+.p-10 { padding: 10px !important; }
+.p-15 { padding: 15px !important; }
+.p-20 { padding: 20px !important; }
+.p-25 { padding: 25px !important; }
+.p-30 { padding: 30px !important; }
+.portlet-title { display: inline-block; width: 100%; margin-bottom: 15px; }
+.portlet-title .caption { float: left; }
+.portlet-title .caption i { }
+.portlet-title .caption .caption-subject { font-size: 20px; color: #000; }
+.portlet-title .caption { }
+.portlet-title .caption { }
+.portlet-title .action-btns { width: auto; text-align: right; float: right; }
+.captionMD { }
+#updateLadderRanks .modal-body { overflow-y: scroll; max-height: 600px; padding-bottom: 30px; }
+ul.rankCreator li span.rankSpan { float: right; font-size: 34px; color: #333; padding-right: 20px; }
+.text-center th { text-align: center; }
+.tournamentBrackets { overflow-x: scroll; overflow-y: hidden; }
+.scoreCstm { min-width: 30px; background: #fff !important; color: #fff !important; }
+.score.scoreCstm { background: #fff !important; }
+.scoreCstm:nth-child(1) { opacity: 1; }
+.scoreCstm:nth-child(2) { opacity: .8; }
+.scoreCstm:nth-child(3) { opacity: .7; }
+.scoreCstm:nth-child(4) { opacity: .6; }
+.scoreCstm:nth-child(5) { opacity: .5; }
+.scoreCstm:nth-child(6) { opacity: .4; }
+.tournamentBrackets div.jQBracket .team div.label { text-align: left; margin-left: 8px; }
+div.jQBracket .team div.score { float: right; padding: 3px; background-color: rgba(255, 255, 255, 0.7) !important; text-align: center; box-sizing: border-box; margin-left: 1px; }
+div.jQBracket .team.lose { background-color: #a1afbb !important; color: #fff; }
+div.jQBracket .team:first-child { border-bottom: 1px solid #a1afbb !important; }
+div.jQBracket .team { background-color: #a1afbba1 !important; }
+div.jQBracket .team.lose div.score { color: #2b3643 !important; }
+div.jQBracket .team.highlight { background-color: #3c0 !important; color: #fff !important; }
+div.jQBracket .team div.score.rankBox { float: left; background: #2b3643 !important; margin: 0px; color: #fff !important; }
+div.jQBracket .team.highlightWinner { background-color: #5C9BD1 !important; color: #fff !important; }
+div.jQBracket .connector.highlightWinner, div.jQBracket .connector div.connector.highlightWinner { border-color: #5c9bd1 !important; }
+div.jQBracket .win .bubble { background-color: #5c9bd1 !important; color: #fff !important; }
+div.jQBracket .win .bubble:after { border-right-color: #5c9bd1 !important; }
+div.jQBracket .lose .bubble.fourth { background-color: #8877a9 !important; color: #fff !important; }
+div.jQBracket .lose .bubble.fourth:after { border-right: 6px solid #8877a9 !important; }
+.resturant-box .text-muted { display: inline-block; }
+.resturant-box .del-icon { color: #999; font-size: 18px; margin: 0 10px 0 0; }
+.resturant-box a.del-icon:hover { color: #C4061F; }
+.restaurant-main .parent-category-box { padding: 0px; }
+.resturant-box.parent-category-box .media-left img { }
+#shop-carousel .active-item { }
+.resturant-box .box { margin-bottom: 0px; }
+.restaurant-main .shop-inner { margin-bottom: 30px; }
+.restaurant-main .heading { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; line-height: 26px; margin-top: 0px; }
+.restaurant-main .menu-list { height: 598px; overflow-y: auto; }
+.restaurant-main .menu-sidebar { box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15); }
+.restaurant-main .sidebar-heading { border-bottom: 0px; background: #f8f8f8; }
+.menu-list ul li:hover, .menu-list ul li.active-menu { background: rgba(0, 0, 0, 0.065) !important; }
+.restaurant-main .productsTableContainer { overflow-y: auto; }
+.restaurant-main .menu-list ul li:hover { cursor: pointer; }
+.shop-main .menu-list { height: 598px; overflow-y: auto; }
+.w-53 { width: 53px; height: auto; line-height: 53px; display: inline-block; text-align: center; }
+.restaurant-main img { max-width: 100%; }
+.resturant-box .box { margin-bottom: 0px; }
+.box-shadow-z0, .box-shadow-z0 .box, .box-shadow-z0 .box-color { box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15); }
+.restaurant-main .m-r { margin-right: 1rem !important; }
+.restaurant-main .clear { display: block; overflow: hidden; }
+.restaurant-main .productsTableContainer { overflow-y: auto; }
+.productsTableContainer { height: 600px; overflow-y: scroll; }
+.restaurant-main .menu-list ul li:hover { cursor: pointer; }
+.shop-main .menu-list { height: 598px; overflow-y: auto; }
+#shop-carousel .active-item { border-bottom: 3px solid #C4061F; }
+.add-category-btn { background: #fff; padding: 22px 0px; font-size: 20px; color: #ccc; text-align: center; }
+.add-category-btn a { color: #ccc; text-decoration: none; }
+.owl-carousel .owl-item { margin-right: 20px; }
+.main-padd { padding: 17px 0; overflow: hidden; }
+.restaurant-main .box, .restaurant-main .box-color { background-color: #fff; position: relative; box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15); padding: 15px; }
+.parent-category-box.resturant-box .box-color { }
+.restaurant-main .menu-sidebar { box-shadow: 0 0px 1px rgba(0, 0, 0, 0.15); }
+.menu-sidebar { background: #fff; }
+.sidebar-heading { padding: 24px 10px; background: #f8f8f8; }
+.addCategoryField { padding: 10px; background: #f0f0f0; border: 1px solid #fafafa; }
+.sidebar-heading h3 { font-size: 20px; margin: 0; }
+.addCategoryButton { display: inline-block; position: absolute; right: 25px; top: 20px; }
+.addCategoryButton button { background: #C4061F; border: 1px transparent; border-radius: 50% !Important; width: 30px; height: 30px; color: #fff; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; }
+.menu-list ul li { padding: 12px 0; overflow: hidden; width: 100%; }
+.restaurant-main .menu-list ul li:hover { cursor: pointer; }
+.menu-list ul li:hover, .menu-list ul li.active-menu { background: rgba(0, 0, 0, 0.065) !important; }
+.menu-list ul li:hover, .menu-list ul li.active-menu { background: #fcfcfc; }
+.menu-list ul li a:hover, .menu-list ul li.active-menu a { color: #C4061F; }
+.menu-list ul li a { display: inline-block; color: #7f919e; font-size: 16px; }
+.menu-list ul { padding: 0px; }
+.restaurant-main .nameHeading { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100px; width: 100px; display: inline-block; vertical-align: middle; }
+.menu-list ul li a span i { vertical-align: middle; padding-right: 5px; }
+.segments-inner .box { padding: 0px; }
+.segments-inner .inner-page-heading h3 { margin: 0px; }
+.search-box { position: relative; }
+.search-btn { position: absolute; right: 10px; background: 0 none; font-size: 18px; border: 0; top: -5px; }
+.btn-def { background: #C4061F; border: 0 none; border-radius: 3px; color: #fff; padding: 8px; }
+a.btn-def { color: #fff !important; }
+.search-bar { min-width: 300px; background: #fff; border: 1px solid #eee; border-radius: 3px; color: #333; padding: 8px; margin: 0 6px 0 0; }
+.sec-style h3 { color: #E7334B; font-size: 20px; margin: 0; }
+.sec-style p { margin: 0; }
+.blue-cb { background: #E7334B; color: #fff; text-decoration: none; padding: 4px 7px; font-size: 13px; border-radius: 3px; }
+.del-icon { color: #999; font-size: 20px; }
+.sec-style { padding: 15px 0px; }
+.inner-header { background: #f8f8f8; padding: 15px 0; }
+a:hover, a:focus { text-decoration: none; outline: none; }
+.dashboard-stat2 .display { margin-bottom: 0px; }
+.dashboard-stat2 .display .number small { min-height: 45px; display: inline-block; }
+.dashboard-stat2 .display .number { width: 80%; }
+.dashboard-stat2 .display .icon { width: 20%; text-align: right; }
+.dashboard-stat2 .display .number h3>small { display: inline; }
+.dashboard-stat2 { margin-bottom: 30px; }
+#reservation-tennis textarea.form-control { resize: none; }
+.sm-box .search-bar { min-width: 200px; }
+.restaurantTable tr { border-color: #e7ecf1; border-style: dashed; border: 3px dashed #fff; border-bottom: 1px solid #e7ecf1; cursor: all-scroll; }
+.restaurantTable tr.over { border-color: #e6e6e6; border-style: dashed; border: 3px dashed #e6e6e6; border-bottom: 3px dashed #e6e6e6; }
+.restaurant-main .menu-list ul li, .restaurant-main .menu-list ul li:hover { border-color: #fff; border-style: dashed; cursor: all-scroll; }
+.restaurant-main .menu-list ul li a { cursor: all-scroll; }
+.restaurant-main .menu-list ul li.over { border-color: #e6e6e6; border-style: dashed; }
+.menu-list ul li:hover, .menu-list ul li.active-menu { border-color: rgb(238, 238, 238) !important; border-style: dashed; }
+.restaurantTable.table-hover>tbody>tr:hover { background: #f3f4f6!important; border: 3px solid #f3f4f6; border-bottom: 1px solid #f3f4f6; }
+.restaurantTable tr:hover { border: 3px solid #ddd; border-bottom: 3px solid #e7ecf1; }

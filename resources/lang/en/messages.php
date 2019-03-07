@@ -1,0 +1,28 @@
+<?php
+return [
+    'court_success' => 'Court Created Successfully',
+    'court_update_success' => 'Court Updated Successfully',
+    'general_error' => 'Something Went Wrong',
+    'member_create_success' => 'Member Created Successfully',
+    'member_update_success' => 'Member Update Successfully',
+    'beacon_success' => 'Beacon Configured Successfully',
+    'beacon_update_success' => 'Beacon Updated Successfully',
+    'beacon_delete_success' => 'Beacon Deleted Successfully',
+    'account_update_successfull' => 'Account Updated Successfully',
+    'club_settings_update_successfull' => 'Settings updated successfully',
+    'coach_created_successfully' => 'Coach Account Created Successfully',
+    'coach_updated_successfully' => 'Coach Account Updated Successfully',
+    'coach_deleted_successfully' => 'Coach Account deleted Successfully',
+    'training_created_successfully' => 'Training created successfully',
+    'training_update_successfully' => 'Training updated successfully',
+    'training_deleted_successfully' => 'Training deleted successfully',
+    'training_reservation_successfully' => 'Training reservation was successfull',
+    'training_reservation_cancel_successfully' => 'Reservation cancelled successfully',
+    'member_import_operations_success'=>'We have started import and will let you know via email',
+    'affiliate_member_approved'=>'Affilate member account status changed to approved',
+    'affiliate_member_rejected'=>'Affiliate member account status changed to rejected',
+    'training_cloned_successfully'=>'Training copied successfully',
+    'league_success' => 'League Created Successfully',
+    'league_update_success' => 'League Updated Successfully',
+    'league_delete_success' => 'League Deleted Successfully'
+];

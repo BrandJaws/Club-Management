@@ -1,0 +1,4 @@
+.portlet-title .col-sm-5 .inputs.text-right{ display:none !important;}
+.actionWrap, .action-btns { display:none; }
+.page-content-white .page-title { font-size:30px !important; color:#000; }
+.hideInPrint { display:none !important;}

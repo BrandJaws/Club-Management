@@ -1,0 +1,113 @@
+.popover-content {
+    width: 250px !important;
+    padding: 10px 10px 10px 40px !important;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+
+.popover-content::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+.popover-content::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+
+.popover-content::-webkit-scrollbar-thumb
+{
+    background-color: #cdcdcd;
+}
+
+.UserSelectForm .checkbox label img{
+    width: 45px;
+    height: 45px;
+    border: 1px transparent;
+    border-radius: 50% !important;
+}
+
+.UserSelectForm .checkbox label {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.UserSelectForm .checkbox input {
+    margin-top: 16px;
+}
+
+.addPlayerBtn {
+    background: #e7505a;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    line-height: 30px;
+    border: 1px solid transparent;
+    border-radius: 4px !important;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.rankHeadingTitle {
+    margin-top: 12px;
+}
+
+.rankRow {
+    padding: 10px 10px 10px 0;
+    margin: 10px 0 10px 0;
+}
+
+.popover-title {
+    padding: 14px 14px;
+}
+
+.v-small-btn {
+    margin-top: -7px;
+}
+
+.rankedUser {
+    position: relative;
+    display: inline-block;
+    max-width: 50px;
+}
+
+.rankedUser .removeRankedUser {
+    background: red;
+    color: #fff;
+    cursor: pointer;
+    width: 15px;
+    height: 15px;
+    border: 1px solid transparent;
+    border-radius: 50% !important;
+    font-size: 7px;
+    line-height: 3px !important;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.rankedUser img {
+    width: 50px;
+    height: 50px;
+    border: 1px solid transparent;
+    border-radius: 50% !important;
+}
+
+.rankedUser:hover .removeRankedUser {
+    display: inline-block;
+}
+
+.mt-actions .mt-action .mt-action-img>img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    object-position: center;
+}
