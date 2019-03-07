@@ -124,7 +124,7 @@ Route::group([
      *
      */
     Route::group([
-        'prefix' => 'court',
+        'prefix' => 'trainer',
         'as' => 'court.'
     ], function () {
         Route::get('/', [

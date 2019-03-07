@@ -68,7 +68,7 @@
         @endif
 
         @canAccess('courts')
-          <li class="{{App\Http\Libraries\Helper::isMenuActive('court*','start active open')}}"> <a href="{{url('/court')}}"> <i class="icon-grid"></i> <span class="title">Courts</span> </a> </li>
+          <li class="{{App\Http\Libraries\Helper::isMenuActive('trainer*','start active open')}}"> <a href="{{url('/trainer')}}"> <i class="icon-grid"></i> <span class="title">Trainers</span> </a> </li>
 
         @endif
 

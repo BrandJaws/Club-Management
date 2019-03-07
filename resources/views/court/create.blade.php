@@ -5,14 +5,14 @@
 	<ul class="page-breadcrumb">
 		<li><i class="fa fa-home"></i> <a href="index.html">Home</a> <i
 					class="fa fa-angle-right"></i></li>
-		<li><a href="{{url('/court')}}">Courts</a> <i
+		<li><a href="{{url('/court')}}">Trainer</a> <i
 					class="fa fa-angle-right"></i></li>
 		<li><a href="#.">Create</a></li>
 	</ul>
 </div>
 
 <h1 class="page-title">
-	Create Court
+	Add Trainer
 </h1>
 
 <!-- END PAGE HEADER-->
@@ -38,7 +38,7 @@
 							@endif
 							<div class="form-group {{($errors->has('name'))?'has-error':''}}">
 								<label class="control-label">Name</label>
-								{!! Form::text('name',Input::old('name'), ['class'=>'form-control','placeholder'=>'Court Name'] ) !!}
+								{!! Form::text('name',Input::old('name'), ['class'=>'form-control','placeholder'=>'Trainer Name'] ) !!}
 								@if($errors->has('name')) <span class="help-block">{{$errors->first('name') }}</span> @endif
 							</div>
 							<div class="form-group {{($errors->has('openTime'))?'has-error':''}}">
@@ -69,7 +69,7 @@
 								@if($errors->has('status')) <span class="help-block">{{$errors->first('status') }}</span> @endif
 							</div>
 							<div class="form-group m-t-30 text-right">
-								{!! Form::button('Create Court', ['class'=>'btn red btn-lg btn-outline btn-circle','type'=>'submit']) !!}
+								{!! Form::button('Add Trainer', ['class'=>'btn red btn-lg btn-outline btn-circle','type'=>'submit']) !!}
 							</div>
 							{!! Form::close() !!}
 						</div>
