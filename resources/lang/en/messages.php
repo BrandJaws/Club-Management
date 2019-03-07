@@ -1,7 +1,7 @@
 <?php
 return [
-    'court_success' => 'Court Created Successfully',
-    'court_update_success' => 'Court Updated Successfully',
+    'court_success' => 'Trainer Registered Successfully',
+    'court_update_success' => 'Trainer Updated Successfully',
     'general_error' => 'Something Went Wrong',
     'member_create_success' => 'Member Created Successfully',
     'member_update_success' => 'Member Update Successfully',

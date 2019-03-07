@@ -58,18 +58,18 @@
 										class="help-block">{{$errors->first('closeTime') }}</span> @endif
 								</div>
 								
-								<div class="form-group {{($errors->has('environment'))?'has-error':''}}">
-									<label class="control-label">Select Environment</label>
-									{!!Form::select('environment', array_flip(\Config::get('global.court.environment')),(isset($data['environment']))?$data['environment']:'',['class'=>'form-control','placeholder'=>'Select Environment'] ) !!}
-									@if($errors->has('environment')) <span
-										class="help-block">{{$errors->first('environment') }}</span> @endif
-								</div>
-								<div class="form-group {{($errors->has('ballMachineAvailable'))?'has-error':''}}">
-									<label class="control-label">Ball Machine Available?</label>
-									{!!Form::select('ballMachineAvailable', \Config::get('global.court.ballmachinestatus'),(isset($data['ballMachineAvailable']))?$data['ballMachineAvailable']:'',['class'=>'form-control','placeholder'=>'Ball Machine Available?'] ) !!}
-									@if($errors->has('ballMachineAvailable')) <span
-										class="help-block">{{$errors->first('ballMachineAvailable') }}</span> @endif
-								</div>
+								{{--<div class="form-group {{($errors->has('environment'))?'has-error':''}}">--}}
+									{{--<label class="control-label">Select Environment</label>--}}
+									{{--{!!Form::select('environment', array_flip(\Config::get('global.court.environment')),(isset($data['environment']))?$data['environment']:'',['class'=>'form-control','placeholder'=>'Select Environment'] ) !!}--}}
+									{{--@if($errors->has('environment')) <span--}}
+										{{--class="help-block">{{$errors->first('environment') }}</span> @endif--}}
+								{{--</div>--}}
+								{{--<div class="form-group {{($errors->has('ballMachineAvailable'))?'has-error':''}}">--}}
+									{{--<label class="control-label">Ball Machine Available?</label>--}}
+									{{--{!!Form::select('ballMachineAvailable', \Config::get('global.court.ballmachinestatus'),(isset($data['ballMachineAvailable']))?$data['ballMachineAvailable']:'',['class'=>'form-control','placeholder'=>'Ball Machine Available?'] ) !!}--}}
+									{{--@if($errors->has('ballMachineAvailable')) <span--}}
+										{{--class="help-block">{{$errors->first('ballMachineAvailable') }}</span> @endif--}}
+								{{--</div>--}}
 								<div class="form-group {{($errors->has('status'))?'has-error':''}}">
 									<label class="control-label">Status</label>
 									{!! Form::select('status', array('OPEN' => 'Open', 'CLOSED' => 'Closed'),(isset($data['status']))?$data['status']:'',array('class' => 'form-control') ) !!}

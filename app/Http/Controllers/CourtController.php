@@ -73,8 +73,8 @@ class CourtController extends Controller {
 				'name' => 'required|min:5,max:40',
 				'openTime' => 'required|date_format:H:i A',
 				'closeTime' => 'required|date_format:H:i A',
-				'environment' => 'required|in:' . implode ( ',', \Config::get ( 'global.court.environment' ) ),
-				'ballMachineAvailable' => 'required|in:' . implode ( ',', array_flip(\Config::get ( 'global.court.ballmachinestatus' ) )),
+				//'environment' => 'required|in:' . implode ( ',', \Config::get ( 'global.court.environment' ) ),
+				//'ballMachineAvailable' => 'required|in:' . implode ( ',', array_flip(\Config::get ( 'global.court.ballmachinestatus' ) )),
 				'status' => 'required' 
 		] );
 		
@@ -102,7 +102,7 @@ class CourtController extends Controller {
 					'serverError' => $this->error 
 			] );
 		}
-		return \Redirect::to ( '/court' )->with ( [ 
+		return \Redirect::to ( '/trainer' )->with ( [
 				'success' => trans ( 'messages.court_success' ) 
 		] );
 	}
@@ -153,8 +153,8 @@ class CourtController extends Controller {
 				'name' => 'required|min:5,max:40',
 				'openTime' => 'required|date_format:H:i A',
 				'closeTime' => 'required|date_format:H:i A',
-				'environment' => 'required|in:' . implode ( ',', \Config::get ( 'global.court.environment' ) ),
-				'ballMachineAvailable' => 'required|in:' . implode ( ',', array_flip(\Config::get ( 'global.court.ballmachinestatus' ) ) ),
+				//'environment' => 'required|in:' . implode ( ',', \Config::get ( 'global.court.environment' ) ),
+				//'ballMachineAvailable' => 'required|in:' . implode ( ',', array_flip(\Config::get ( 'global.court.ballmachinestatus' ) ) ),
 				'status' => 'required' 
 		] );
 		
@@ -181,7 +181,7 @@ class CourtController extends Controller {
 					'serverError' => $this->error 
 			] );
 		}
-		return \Redirect::to ( '/court' )->with ( [ 
+		return \Redirect::to ( '/trainer' )->with ( [
 				'success' => trans ( 'messages.court_update_success' ) 
 		] );
 	}
