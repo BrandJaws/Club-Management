@@ -318,7 +318,7 @@
   <div class="col-md-12">
     <div class="portlet light">
       <div class="portlet-title tabbable-line">
-        <div class="caption"> <i class="icon-globe font-dark hide"></i> <span class="caption-subject font-dark bold uppercase">Pickleball Courts</span> </div>
+        <div class="caption"> <i class="icon-globe font-dark hide"></i> <span class="caption-subject font-dark bold uppercase">Bike Trainer Reservations</span> </div>
       </div>
       <div id="error-bar" class="alert alert-warning " v-if="errorBarText" role="alert" v-cloak>@{{errorBarText}}</div>
       <div id="success-bar" class="alert alert-success " v-if="successBarText" role="alert" v-cloak>@{{successBarText}}</div>

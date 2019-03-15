@@ -6,7 +6,7 @@
 		<ul class="page-breadcrumb">
 			<li><i class="fa fa-home"></i> <a href="#">Home</a> <i
 						class="fa fa-angle-right"></i></li>
-			<li><a href="{{url('/reservation')}}">Reservations</a></li>
+			<li><a href="{{url('/reservation')}}">Bike Trainer Reservations</a></li>
 		</ul>
 		<div class="page-toolbar">
 			<div id="" class="pull-right tooltips btn btn-fit-height" data-placement="top" data-original-title="Search Members">
@@ -19,7 +19,7 @@
 	</div>
 
 	<h1 class="page-title">
-		Reservations
+		Bike Trainer Reservations
 	</h1>
 	<!-- END PAGE HEADER-->
 	<div class="clearfix"></div>
