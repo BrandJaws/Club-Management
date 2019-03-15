@@ -34,6 +34,7 @@ class EmployeeController extends Controller {
 		$privateLessons = [];
 		$saleInvoiceStats = [];
 		$messagesFromPos = [];
+		$feeds = [];
     	try {
 			//get courts with reservations
 			$data = $this->get ( $this->restService ['reservations'] )->response ();
