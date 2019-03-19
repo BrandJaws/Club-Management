@@ -73,22 +73,21 @@
 								<td class="">
 									@{{reservation.reservations[0].checkoutMethod}}
 								</td>
-								<td class="">
+								{{--<td class="">--}}
 									{{--@{{reservation.reservations[0].customerName}}--}}
-								</td>
-								
-								{{--<td class="text-center">--}}
-									{{--<a class="btn btn-outline btn-circle btn-sm red csEditBtn" title="Edit" @click="editButtonClicked(reservation.reservations[0])"><i class="fa fa-pencil"></i> Edit</a>--}}
 								{{--</td>--}}
+								
+								<td class="text-center">
+									<a class="btn btn-outline btn-circle btn-sm red csEditBtn" title="Edit" @click="editButtonClicked(reservation, court.club_id, court.court_id, court.court_name)"><i class="fa fa-pencil"></i> Edit</a>
+								</td>
 							</tr>
 							<tr v-else-if="reservation.reservations[0].visibleBasedOnBookingStatusFilter">
 								<td scope="row">@{{reservation.timeSlot }}
 								</th>
 								<td class="active-def" v-for="(player,playerIndex) in reservation.reservations[0].playersForBinding">
-									{{--<input class="form-control autocomplete-input input-sm" v-model="player.playerName"--}}
-									       {{--type="text" @input="--}}
-                                                            {{--playerValueChanged(reservation.reservations[0],playerIndex,$event)"--}}
-									       {{--:data-player-name="player.playerName" :data-player-id="player.playerId">--}}
+									<input class="form-control autocomplete-input input-sm" v-model="player.playerName"
+									       type="text" @input="playerValueChanged(reservation.reservations[0],playerIndex,$event)"
+									       :data-player-name="player.playerName" :data-player-id="player.playerId">
 									@{{ player.playerName }}
 								</td>
 								
@@ -125,7 +124,96 @@
 				</div>
 			</div>
 			<!-- court 1 ends here -->
-		
+			
+			<div id="newReservationModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3>CREATE NEW RESERVATION</h3>
+							{{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">Trainer</label>
+										<select name="" id="" class="form-control">
+											<option value="newReservation.court_id">@{{ newReservation.court_name }}</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="">Start Time</label>
+										<select name="" id="" class="form-control">
+											<option value="newReservation.timeStart">@{{ newReservation.timeStart }}</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="">End Time</label>
+										<select name="" id="" class="form-control">
+											<option v-for="endTime in newReservation.timeEnd" value="endTime">@{{ endTime }}</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label class="control-label">Checkout Method</label> <br>
+										<div class="md-radio-inline">
+											<div class="md-radio">
+												<input type="radio" value="PACKAGED" id="packaged" name="package" class="md-radiobtn" checked>
+												<label for="packaged">
+													<span class="inc"></span>
+													<span class="check"></span>
+													<span class="box"></span> Guest
+												</label>
+											</div>
+											<div class="md-radio">
+												<input type="radio" value="INDIVIDUAL" id="individual" name="package" class="md-radiobtn">
+												<label for="individual">
+													<span class="inc"></span>
+													<span class="check"></span>
+													<span class="box"></span> Existing Member
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">Search Existing Members</label>
+										<input class="form-control autocomplete-input" type="text">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="">First Name</label>
+										<input type="text" class="form-control" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="">Last Name</label>
+										<input type="text" class="form-control" />
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="">Email Address</label>
+										<input type="text" class="form-control" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button data-dismiss="modal" aria-label="Close" class="btn btn-outline btn-circle blue">Cancel</button>
+							<button class="btn btn-outline btn-circle red csEditBtn">Save Reservation</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -150,21 +238,44 @@
 
 				bookingStatusFilterOptions: ["Both", "Booked", "Vacant"],
 				bookingStatusFilterSelected: "Both",
-				noResultForFilter: false
+				noResultForFilter: false,
+				newReservation: {
+					timeStart: null,
+					timeEnd: null,
+					reservationDate: null
+				}
 			}
 		},
+		computed: {
+		
+		},
 		methods: {
-			editButtonClicked: function (reservation) {
+			editButtonClicked: function (reservation, club_id, court_id, court_name) {
 
 				reservation.temp = JSON.stringify(reservation.playersForBinding);
-				reservation.captionsRowVisible = false;
-				reservation.visibleBasedOnFilter = true;
+				//reservation.captionsRowVisible = false;
+				//reservation.visibleBasedOnFilter = true;
 
 				Vue.nextTick(function () {
 					$(".autocomplete-input").easyAutocomplete(options);
 				});
+				
+				$("#newReservationModal").modal("show");
 
 				//vue.data.reservationsList[x].captionsRowVisible = false;
+				var timeEndArray = [];
+				timeEndArray.push(moment(reservation.timeSlot, 'hh:mm A').add(1, 'hours'));
+				timeEndArray.push(moment(reservation.timeSlot, 'hh:mm A').add(2, 'hours'));
+				for (var i = 0; i < timeEndArray.length; i++) {
+					timeEndArray[i] = moment(timeEndArray[i]).format('hh:00 A');
+				}
+				reservation.timeStart = moment(reservation.timeSlot, 'hh:mm A').format('hh:00 A');
+				reservation.timeEnd = timeEndArray;
+				reservation.reservationDate = moment(reservation.time_start).format('YYYY-MM-DD');
+				reservation.court_id = court_id;
+				reservation.court_name = court_name;
+				reservation.club_id = club_id;
+				this.newReservation = reservation;
 
 
 			},
