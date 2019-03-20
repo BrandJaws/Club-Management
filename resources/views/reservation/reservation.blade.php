@@ -96,13 +96,13 @@
 		mounted:function() {
             $('#courtDateUpdate').datepicker()
 			.on('changeDate', function(e) {
-				vue.fetchReservationsDataForSelectedDate($("#courtDateUpdate").val());
+				vue.fetchReservationsDataForSelectedDate($("#courtDateUpdate").val(), true);
 			});
             this.hideProgressRing();
 		},
 		methods: {
 
-			fetchReservationsDataForSelectedDate: function (date) {
+			fetchReservationsDataForSelectedDate: function (date, showDataFetchMessage) {
 				this.showProgressRing();
 				console.log("fetch reservations called");
 
@@ -131,11 +131,17 @@
 							this.dateReceived = _courtsByDate.date;
 
 
-							this.showSuccessBar("Data for the specified date loaded successfuly");
+							if (showDataFetchMessage) {
+								this.showSuccessBar("Data for the specified date loaded successfully");
+							}
 
 
 						} else {
-							this.showErrorBar("Failed to load data for the specified date!");
+							if (showDataFetchMessage) {
+								this.showErrorBar("Failed to load data for the specified date!");
+							} else {
+								this.showErrorBar("Reservation was successful but the updated data couldn't load successfully. Please reload the page.");
+							}
 
 						}
 
@@ -163,7 +169,7 @@
 				this.errorBarText = errorBarText;
 			},
 			successMessageReceived: function (message) {
-				this.fetchReservationsDataForSelectedDate(message.date);
+				this.fetchReservationsDataForSelectedDate(message.date, false);
 				this.showSuccessBar(message.message);
 			},
 			errorMessageReceived: function (message) {

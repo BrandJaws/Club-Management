@@ -169,7 +169,7 @@
 										</div>
 										<div class="radio">
 											<label for="">
-												<input type="radio" v-model="checkoutMethod" value="EXISTING_MEMBER" id="existing_member" class="md-radiobtn">
+												<input type="radio" v-model="checkoutMethod" value="EXISTING_CUSTOMER" id="existing_member" class="md-radiobtn">
 												Existing Member
 											</label>
 										</div>
@@ -193,7 +193,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-md-12" v-if="checkoutMethod === 'EXISTING_MEMBER' ">
+								<div class="col-md-12" v-if="checkoutMethod === 'EXISTING_CUSTOMER' ">
 									<div class="form-group">
 										<label for="">Search Existing Members</label>
 										{{--<input class="form-control autocomplete-input input-sm"--}}
@@ -232,7 +232,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button data-dismiss="modal" aria-label="Close" class="btn btn-outline btn-circle blue">Cancel</button>
+							<button @click="closeReservationModal" aria-label="Close" class="btn btn-outline btn-circle blue">Cancel</button>
 							<button @click="saveButtonClicked(newReservation)" class="btn btn-outline btn-circle red csEditBtn">Save Reservation</button>
 						</div>
 					</div>
@@ -282,15 +282,11 @@
 		watch: {
 
 			courts: function (val) {
-				console.log(this.courts);
-
 				this.reAssessReservationVisibiltyBasedOnBookingStatus();
-
-
 			},
 		 
 			newReservation: function () {
-				if (this.newReservation.checkoutMethod === 'EXISTING_MEMBER') {
+				if (this.newReservation.checkoutMethod === 'EXISTING_CUSTOMER') {
 					this.showSearchMemberComponent = true;
 				} else {
 					this.showSearchMemberComponent = false;
@@ -300,6 +296,7 @@
 		 
 			checkoutMethod: function () {
 				this.newReservation.checkoutMethod = this.checkoutMethod;
+				console.log(this.newReservation);
 			},
 
 			endTimeSelected: function () {
@@ -316,6 +313,19 @@
 		
 		},
 		methods: {
+			closeReservationModal: function () {
+				var reservation = {
+					timeStart: null,
+					timeEnd: null,
+					reservationDate: null,
+					numberOfBooking: 0,
+					memberId: 0,
+					checkoutMethod: 'GUEST'
+				};
+				this.checkoutMethod = 'GUEST';
+				this.newReservation = reservation;
+				$("#newReservationModal").modal("hide");
+			},
 			playerSelectedFromDropDown: function (item) {
 				console.log(item);
 				var reservation = JSON.parse(JSON.stringify(this.newReservation));
@@ -405,12 +415,13 @@
 						dataType: "html"
 					},
 					success: function (msg) {
-						
-						if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
-							$("#newReservationModal").modal("hide");
-							this.$emit('success-message', { date: reservation.reserved_at, message: "Successfuly added a new reservation" });
-						} else {
-							this.$emit('error-message', msg);
+						if (msg.courts.length > 0 && msg.courts[0].reservations.length > 0) {
+							if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
+								$("#newReservationModal").modal("hide");
+								this.$emit('success-message', { date: reservation.reserved_at, message: "Successfully added a new reservation" });
+							} else {
+								this.$emit('error-message', msg);
+							}
 						}
 
 						// newReservation = this.tryParseReservationAsJSON(msg);
