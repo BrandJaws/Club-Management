@@ -39,7 +39,7 @@
 								<th style="width: 95px;">Time</th>
 								<th>Name</th>
 								<th>Email</th>
-								<th>Checkout Method</th>
+								<th>Member Type</th>
 								<th style="width: 141px;">
 									<div>
 										<select class="form-control input-circle input-sm"
@@ -78,7 +78,8 @@
 								{{--</td>--}}
 								
 								<td class="text-center">
-									<a class="btn btn-outline btn-circle btn-sm red csEditBtn" title="Edit" @click="editButtonClicked(reservation, court.club_id, court.court_id, court.court_name)"><i class="fa fa-pencil"></i> Edit</a>
+									<a @click="sendDeleteReservationRequest(reservation.reservations[0])" v-if="typeof reservation.reservations[0].tennis_reservation_id !== 'undefined'" href="#.">Cancel Reservation</a>
+									<a v-else class="btn btn-outline btn-circle btn-sm red csEditBtn" title="Edit" @click="editButtonClicked(reservation, court.club_id, court.court_id, court.court_name)"><i class="fa fa-pencil"></i> Edit</a>
 								</td>
 							</tr>
 							<tr v-else-if="reservation.reservations[0].visibleBasedOnBookingStatusFilter">
@@ -502,43 +503,43 @@
 				});
 			},
 			sendDeleteReservationRequest: function (reservation) {
-
-				this.showProgressRing();
+			 
 				var tennisReservationId = reservation.tennis_reservation_id;
-
-				var request = $.ajax({
-					url: this.baseUrl + '/reservation/' + tennisReservationId,
-					method: "POST",
-					data: {
-						_method: "DELETE",
-						dataType: "html"
-					},
-					success: function (msg) {
-
-						deletedReservation = this.tryParseReservationAsJSON(msg);
-						if (deletedReservation !== null) {
-
-							this.clearReservationRowOnDeletion(deletedReservation);
-							this.reAssessReservationVisibiltyBasedOnBookingStatus();
-							this.$emit('success-message', "Successfuly cancelled reservation");
-
-							reservation.captionsRowVisible = true;
-
-
-						} else {
-							this.$emit('error-message', msg);
-
+				var consent = confirm('Are you sure you want to cancel this reservation? Refunds for paid reservations can be managed from Stripe dashboard.');
+				if (consent) {
+					this.showProgressRing();
+					var request = $.ajax({
+						url: this.baseUrl + '/reservation/' + tennisReservationId,
+						method: "POST",
+						data: {
+							_method: "DELETE",
+							dataType: "html"
+						},
+						success: function (msg) {
+		
+							deletedReservation = this.tryParseReservationAsJSON(msg);
+							if (deletedReservation !== null) {
+		
+								this.clearReservationRowOnDeletion(deletedReservation);
+								this.reAssessReservationVisibiltyBasedOnBookingStatus();
+								this.$emit('success-message', { date: msg.date, message: "Successfully cancelled reservation" });
+		
+								reservation.captionsRowVisible = true;
+		
+		
+							} else {
+								this.$emit('error-message', msg);
+		
+							}
+		
+							this.hideProgressRing();
+						}.bind(this),
+						error: function (jqXHR, textStatus) {
+							console.log("Request failed: " + textStatus);
+							this.hideProgressRing();
 						}
-
-						this.hideProgressRing();
-					}.bind(this),
-					error: function (jqXHR, textStatus) {
-						console.log("Request failed: " + textStatus);
-						this.hideProgressRing();
-					}
-				});
-
-
+					});
+				}
 			},
 			updateReservationRowWithNewData: function (newData) {
 
