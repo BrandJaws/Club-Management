@@ -86,8 +86,6 @@ class ReservationController extends Controller
             'court_id' => 'required',
             'time' => 'required',
             'reserved_at' => 'required',
-            'player' => 'required',
-            'parent_id' => 'required'
         ]);
         
         if ($validator->fails()) {

@@ -96,17 +96,18 @@
 		mounted:function() {
             $('#courtDateUpdate').datepicker()
 			.on('changeDate', function(e) {
-				vue.fetchReservationsDataForSelectedDate();
+				vue.fetchReservationsDataForSelectedDate($("#courtDateUpdate").val());
 			});
             this.hideProgressRing();
 		},
 		methods: {
 
-			fetchReservationsDataForSelectedDate: function () {
+			fetchReservationsDataForSelectedDate: function (date) {
 				this.showProgressRing();
 				console.log("fetch reservations called");
 
-				var requestedDate = moment($('#courtDateUpdate').val()).format('YYYY-MM-DD');
+				//var requestedDate = moment($('#courtDateUpdate').val()).format('YYYY-MM-DD');
+				var requestedDate = moment(date).format('YYYY-MM-DD');
                 console.log(requestedDate);
 				if (!moment(requestedDate).isValid()) {
 					this.showErrorBar("Failed to load data for the specified date!");
@@ -124,6 +125,7 @@
 						console.log(msg);
 						if (_courtsByDate !== null) {
 							this.courts = this.prepareViewModelForCourts(_courtsByDate.courts);
+							this.courts = msg.courts;
 
 							this.dateSelected = _courtsByDate.date;
 							this.dateReceived = _courtsByDate.date;
@@ -161,7 +163,8 @@
 				this.errorBarText = errorBarText;
 			},
 			successMessageReceived: function (message) {
-				this.showSuccessBar(message);
+				this.fetchReservationsDataForSelectedDate(message.date);
+				this.showSuccessBar(message.message);
 			},
 			errorMessageReceived: function (message) {
 				this.showErrorBar(message);

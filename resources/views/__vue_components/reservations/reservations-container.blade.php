@@ -153,63 +153,87 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="">End Time</label>
-										<select name="" id="" class="form-control">
-											<option v-for="endTime in newReservation.timeEnd" value="endTime">@{{ endTime }}</option>
+										<select v-model="endTimeSelected" name="" id="" class="form-control">
+											<option v-for="endTime in newReservation.timeEnd" :value="endTime">@{{ endTime }}</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
 										<label class="control-label">Checkout Method</label> <br>
-										<div class="md-radio-inline">
-											<div class="md-radio">
-												<input type="radio" value="PACKAGED" id="packaged" name="package" class="md-radiobtn" checked>
-												<label for="packaged">
-													<span class="inc"></span>
-													<span class="check"></span>
-													<span class="box"></span> Guest
-												</label>
-											</div>
-											<div class="md-radio">
-												<input type="radio" value="INDIVIDUAL" id="individual" name="package" class="md-radiobtn">
-												<label for="individual">
-													<span class="inc"></span>
-													<span class="check"></span>
-													<span class="box"></span> Existing Member
-												</label>
-											</div>
+										<div class="radio">
+											<label for="">
+												<input type="radio" v-model="checkoutMethod" value="GUEST" id="guest" class="md-radiobtn">
+												Guest
+											</label>
+										</div>
+										<div class="radio">
+											<label for="">
+												<input type="radio" v-model="checkoutMethod" value="EXISTING_MEMBER" id="existing_member" class="md-radiobtn">
+												Existing Member
+											</label>
+										</div>
+										<div class="md-inline-radio">
+											{{--<div class="md-radio">--}}
+												{{--<input type="radio" @change="handleCheckoutMethodChange('GUEST')" v-model="newReservation.checkoutMethod" value="GUEST" id="guest" name="package" class="md-radiobtn">--}}
+												{{--<label for="packaged">--}}
+													{{--<span class="inc"></span>--}}
+													{{--<span class="check"></span>--}}
+													{{--<span class="box"></span> Guest--}}
+												{{--</label>--}}
+											{{--</div>--}}
+											{{--<div class="md-radio">--}}
+												{{--<input type="radio" @change="handleCheckoutMethodChange('EXISTING_MEMBER')" v-model="newReservation.checkoutMethod" value="EXISTING_MEMBER" id="existing_member" name="package" class="md-radiobtn">--}}
+												{{--<label for="individual">--}}
+													{{--<span class="inc"></span>--}}
+													{{--<span class="check"></span>--}}
+													{{--<span class="box"></span> Existing Member--}}
+												{{--</label>--}}
+											{{--</div>--}}
 										</div>
 									</div>
 								</div>
-								<div class="col-md-12">
+								<div class="col-md-12" v-if="checkoutMethod === 'EXISTING_MEMBER' ">
 									<div class="form-group">
 										<label for="">Search Existing Members</label>
-										<input class="form-control autocomplete-input" type="text">
+										{{--<input class="form-control autocomplete-input input-sm"--}}
+											{{--type="text" @input="playerValueChanged($event)"--}}
+											{{--:data-player-name="newReservation.customerFirstName">--}}
+										<auto-complete-box url="{{url('member/list')}}"
+											property-for-id="id"
+											property-for-name="name"
+											filtered-from-source="true"
+											include-id-in-list="true"
+											initial-text-value=""
+											search-query-key="search"
+											field-name="memberId"
+											enable-explicit-selection="true"
+											@explicit-selection="playerSelectedFromDropDown"> </auto-complete-box>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="">First Name</label>
-										<input type="text" class="form-control" />
+										<input v-model="newReservation.customerFirstName" type="text" class="form-control" />
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="">Last Name</label>
-										<input type="text" class="form-control" />
+										<input v-model="newReservation.customerLastName" type="text" class="form-control" />
 									</div>
 								</div>
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="">Email Address</label>
-										<input type="text" class="form-control" />
+										<input v-model="newReservation.customerEmail" type="text" class="form-control" />
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="modal-footer">
 							<button data-dismiss="modal" aria-label="Close" class="btn btn-outline btn-circle blue">Cancel</button>
-							<button class="btn btn-outline btn-circle red csEditBtn">Save Reservation</button>
+							<button @click="saveButtonClicked(newReservation)" class="btn btn-outline btn-circle red csEditBtn">Save Reservation</button>
 						</div>
 					</div>
 				</div>
@@ -218,6 +242,7 @@
 	</div>
 
 </template>
+@include("__vue_components.autocomplete.autocomplete")
 <script>
 
 	Vue.component('reservations-container', {
@@ -239,17 +264,67 @@
 				bookingStatusFilterOptions: ["Both", "Booked", "Vacant"],
 				bookingStatusFilterSelected: "Both",
 				noResultForFilter: false,
+				showSearchMemberComponent: false,
+				checkoutMethod: 'GUEST',
+				endTimeSelected: null,
 				newReservation: {
 					timeStart: null,
 					timeEnd: null,
-					reservationDate: null
+					reservationDate: null,
+					numberOfBooking: 0,
+					memberId: 0,
 				}
 			}
+		},
+		mounted: function () {
+			console.log(this.courts);
+		},
+		watch: {
+
+			courts: function (val) {
+				console.log(this.courts);
+
+				this.reAssessReservationVisibiltyBasedOnBookingStatus();
+
+
+			},
+		 
+			newReservation: function () {
+				if (this.newReservation.checkoutMethod === 'EXISTING_MEMBER') {
+					this.showSearchMemberComponent = true;
+				} else {
+					this.showSearchMemberComponent = false;
+				}
+				console.log(this.newReservation);
+			},
+		 
+			checkoutMethod: function () {
+				this.newReservation.checkoutMethod = this.checkoutMethod;
+			},
+
+			endTimeSelected: function () {
+				var startTime = moment(this.newReservation.timeStart, 'hh:mm a');
+				var endTime = moment(this.endTimeSelected, 'hh:mm a');
+				var duration = moment.duration(endTime.diff(startTime));
+				var hours = parseInt(duration.asHours());
+				this.newReservation.numberOfBooking = hours;
+			}
+
+
 		},
 		computed: {
 		
 		},
 		methods: {
+			playerSelectedFromDropDown: function (item) {
+				console.log(item);
+				var reservation = JSON.parse(JSON.stringify(this.newReservation));
+				reservation.customerFirstName = item.firstName;
+				reservation.customerLastName = item.lastName;
+				reservation.customerEmail = item.email;
+				reservation.memberId = item.id,
+				this.newReservation = reservation;
+			},
 			editButtonClicked: function (reservation, club_id, court_id, court_name) {
 
 				reservation.temp = JSON.stringify(reservation.playersForBinding);
@@ -275,9 +350,13 @@
 				reservation.court_id = court_id;
 				reservation.court_name = court_name;
 				reservation.club_id = club_id;
+				reservation.checkoutMethod = 'GUEST';
 				this.newReservation = reservation;
 
 
+			},
+			handleCheckoutMethodChange: function(method) {
+				this.newReservation.checkoutMethod = method;
 			},
 			cancelButtonClicked: function (reservation) {
 
@@ -288,59 +367,66 @@
 
 
 			},
-			saveButtonClicked: function (reservation, clubId, courtId) {
+			saveButtonClicked: function (reservation) {
 
+				this.sendNewReservationRequest(reservation);
 
-				if (reservation.reservations[0].tennis_reservation_id == null) {
-					this.sendNewReservationRequest(reservation.reservations[0], reservation.timeSlot, clubId, courtId);
-				} else {
-
-					this.sendUpdateReservationRequest(reservation.reservations[0]);
-				}
+				// if (reservation.reservations[0].tennis_reservation_id == null) {
+				// 	this.sendNewReservationRequest(reservation.reservations[0], reservation.timeSlot, clubId, courtId);
+				// } else {
+				//
+				// 	this.sendUpdateReservationRequest(reservation.reservations[0]);
+				// }
 
 			},
-			sendNewReservationRequest: function (reservation, timeSlot, clubId, courtId) {
+			sendNewReservationRequest: function (reservation) {
 
 				this.showProgressRing();
-				var _time = timeSlot;
 
 				var reservedAt = moment(this.dateReceived).format('YYYY-MM-DD');
 
 				// Players for new reservation
-				var _players = [reservation.playersForBinding[0].playerId,
-					reservation.playersForBinding[1].playerId,
-					reservation.playersForBinding[2].playerId,
-					reservation.playersForBinding[3].playerId];
 
 
 				var request = $.ajax({
 					url: this.baseUrl + '/reservation',
 					method: "POST",
 					data: {
-						club_id: clubId,
-						court_id: courtId,
-						time: _time,
+						club_id: reservation.club_id,
+						court_id: reservation.court_id,
+						time: reservation.timeStart,
 						reserved_at: reservedAt,
-						player: _players,
-						parent_id: _players[0],
+						customerFirstName: reservation.customerFirstName,
+						customerLastName: reservation.customerLastName,
+						customerEmail: reservation.customerEmail,
+						checkoutMethod: reservation.checkoutMethod,
+						number_of_bookings: reservation.numberOfBooking,
+						parent_id: reservation.memberId,
 						dataType: "html"
 					},
 					success: function (msg) {
-
-						newReservation = this.tryParseReservationAsJSON(msg);
-						if (newReservation !== null) {
-
-							this.updateReservationRowWithNewData(newReservation);
-							this.$emit('success-message', "Successfuly added a new reservation");
-							reservation.captionsRowVisible = true;
-
-
+						
+						if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
+							$("#newReservationModal").modal("hide");
+							this.$emit('success-message', { date: reservation.reserved_at, message: "Successfuly added a new reservation" });
 						} else {
-
 							this.$emit('error-message', msg);
-
-
 						}
+
+						// newReservation = this.tryParseReservationAsJSON(msg);
+						// if (newReservation !== null) {
+						//
+						// 	this.updateReservationRowWithNewData(newReservation);
+						// 	this.$emit('success-message', "Successfuly added a new reservation");
+						// 	reservation.captionsRowVisible = true;
+						//
+						//
+						// } else {
+						//
+						// 	this.$emit('error-message', msg);
+						//
+						//
+						// }
 						this.hideProgressRing();
 
 					}.bind(this),
@@ -375,20 +461,27 @@
 					},
 					success: function (msg) {
 
-						updatedReservation = this.tryParseReservationAsJSON(msg);
-						if (updatedReservation !== null) {
-
-							this.updateReservationRowWithNewData(updatedReservation);
-							this.reAssessReservationVisibiltyBasedOnBookingStatus();
-							this.$emit('success-message', "Successfuly updated reservation");
-
-							reservation.captionsRowVisible = true;
-
-
+						// updatedReservation = this.tryParseReservationAsJSON(msg);
+						if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
+							this.hideProgressRing();
+							this.$emit('success-message', "Successfully updated reservation");
 						} else {
+							this.hideProgressRing();
 							this.$emit('error-message', msg);
-
 						}
+						// if (updatedReservation !== null) {
+						//
+						// 	// this.updateReservationRowWithNewData(updatedReservation);
+						// 	// this.reAssessReservationVisibiltyBasedOnBookingStatus();
+						// 	// this.$emit('success-message', "Successfuly updated reservation");
+						// 	//
+						// 	// reservation.captionsRowVisible = true;
+						//
+						//
+						// } else {
+						// 	this.$emit('error-message', msg);
+						//
+						// }
 						this.hideProgressRing();
 					}.bind(this),
 					error: function (jqXHR, textStatus) {
@@ -512,19 +605,19 @@
 					}
 				}
 			},
-			playerValueChanged: function (reservation, playerIndex, event) {
+			playerValueChanged: function (event) {
 
 
 				var inputField = $(event.target);
+				console.log(event);
 
-
-				if (inputField.attr("data-player-name") === inputField.val()) {
-					reservation.playersForBinding[playerIndex].playerName = inputField.attr("data-player-name");
-					reservation.playersForBinding[playerIndex].playerId = inputField.attr("data-player-id");
-				} else {
-
-					reservation.playersForBinding[playerIndex].playerId = "";
-				}
+				// if (inputField.attr("data-player-name") === inputField.val()) {
+				// 	reservation.playersForBinding[playerIndex].playerName = inputField.attr("data-player-name");
+				// 	reservation.playersForBinding[playerIndex].playerId = inputField.attr("data-player-id");
+				// } else {
+				//
+				// 	reservation.playersForBinding[playerIndex].playerId = "";
+				// }
 
 
 			},
@@ -597,17 +690,6 @@
 				$(".preLoader").fadeOut("fast");
 			}
 		},
-		watch: {
-
-			courts: function (val) {
-
-				this.reAssessReservationVisibiltyBasedOnBookingStatus();
-
-
-			},
-
-
-		}
 
 	});
 
