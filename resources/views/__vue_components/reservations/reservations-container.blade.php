@@ -138,7 +138,7 @@
 								<div class="col-md-12">
 									<div class="form-group">
 										<label for="">Trainer</label>
-										<select name="" id="" class="form-control">
+										<select disabled name="" id="" class="form-control">
 											<option value="newReservation.court_id">@{{ newReservation.court_name }}</option>
 										</select>
 									</div>
@@ -146,7 +146,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="">Start Time</label>
-										<select name="" id="" class="form-control">
+										<select disabled name="" id="" class="form-control">
 											<option value="newReservation.timeStart">@{{ newReservation.timeStart }}</option>
 										</select>
 									</div>
@@ -416,12 +416,14 @@
 						dataType: "html"
 					},
 					success: function (msg) {
-						if (msg.courts.length > 0 && msg.courts[0].reservations.length > 0) {
-							if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
-								$("#newReservationModal").modal("hide");
-								this.$emit('success-message', { date: reservation.reserved_at, message: "Successfully added a new reservation" });
-							} else {
-								this.$emit('error-message', msg);
+						if (msg.courts.length > 0) {
+							if (msg.courts[0].timeSlots[0].reservations.length > 0) {
+								if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
+									$("#newReservationModal").modal("hide");
+									this.$emit('success-message', { date: reservation.reserved_at, message: "Successfully added a new reservation" });
+								} else {
+									this.$emit('error-message', msg);
+								}
 							}
 						}
 
