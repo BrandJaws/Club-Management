@@ -78,7 +78,7 @@
 								{{--</td>--}}
 								
 								<td class="text-center">
-									<a @click="sendDeleteReservationRequest(reservation.reservations[0])" v-if="typeof reservation.reservations[0].tennis_reservation_id !== 'undefined'" href="#.">Cancel Reservation</a>
+									<a @click="sendDeleteReservationRequest(reservation.reservations[0])" v-if="typeof reservation.reservations[0].tennis_reservation_id !== 'undefined'" href="#." class="btn btn-circle btn-sm red csEditBtn"><i class="fa fa-trash"></i> Cancel</a>
 									<a v-else class="btn btn-outline btn-circle btn-sm red csEditBtn" title="Edit" @click="editButtonClicked(reservation, court.club_id, court.court_id, court.court_name)"><i class="fa fa-pencil"></i> Edit</a>
 								</td>
 							</tr>
