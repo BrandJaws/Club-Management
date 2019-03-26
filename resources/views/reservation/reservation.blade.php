@@ -103,6 +103,7 @@
 		methods: {
 
 			fetchReservationsDataForSelectedDate: function (date, showDataFetchMessage) {
+				console.log(date);
 				this.showProgressRing();
 				console.log("fetch reservations called");
 

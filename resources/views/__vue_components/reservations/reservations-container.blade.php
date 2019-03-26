@@ -325,6 +325,7 @@
 				};
 				this.checkoutMethod = 'GUEST';
 				this.newReservation = reservation;
+				this.hideProgressRing();
 				$("#newReservationModal").modal("hide");
 			},
 			playerSelectedFromDropDown: function (item) {
@@ -397,6 +398,8 @@
 				var reservedAt = moment(this.dateReceived).format('YYYY-MM-DD');
 
 				// Players for new reservation
+			  
+			  var vueScope = this;
 
 
 				var request = $.ajax({
@@ -416,38 +419,33 @@
 						dataType: "html"
 					},
 					success: function (msg) {
-						if (msg.courts.length > 0) {
-							if (msg.courts[0].timeSlots[0].reservations.length > 0) {
-								if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
-									$("#newReservationModal").modal("hide");
-									this.$emit('success-message', { date: reservation.reserved_at, message: "Successfully added a new reservation" });
+						console.log(msg);
+						vueScope.hideProgressRing();
+						if (typeof msg.courts !== 'undefined') {
+							if (msg.courts.length > 0) {
+								if (msg.courts[0].timeSlots[0].reservations.length > 0) {
+									if (typeof msg.courts[0].timeSlots[0].reservations[0].tennis_reservation_id !== "undefined") {
+										vueScope.closeReservationModal();
+										this.$emit('success-message', { date: reservedAt, message: "Successfully added a new reservation" });
+									} else {
+										vueScope.closeReservationModal();
+										this.$emit('error-message', msg);
+									}
 								} else {
+									vueScope.closeReservationModal();
 									this.$emit('error-message', msg);
 								}
+							} else {
+								vueScope.closeReservationModal();
+								this.$emit('error-message', msg);
 							}
+						} else {
+							vueScope.closeReservationModal();
+							this.$emit('error-message', msg);
 						}
-
-						// newReservation = this.tryParseReservationAsJSON(msg);
-						// if (newReservation !== null) {
-						//
-						// 	this.updateReservationRowWithNewData(newReservation);
-						// 	this.$emit('success-message', "Successfuly added a new reservation");
-						// 	reservation.captionsRowVisible = true;
-						//
-						//
-						// } else {
-						//
-						// 	this.$emit('error-message', msg);
-						//
-						//
-						// }
-						this.hideProgressRing();
-
 					}.bind(this),
 					error: function (msg) {
-
-						hideProgressRing()
-
+						vueScope.hideProgressRing();
 					}.bind(this),
 				});
 
